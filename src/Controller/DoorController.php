@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Annotation\Route;
+use function Symfony\Component\Clock\now;
 
 class DoorController extends AbstractController
 {
@@ -52,6 +53,7 @@ class DoorController extends AbstractController
     // send status and message after success
     return $this->json([
       'status' => true,
+      'time' => now(),
       'message' => 'Signal send ' . $i . ' times for ' . self::SLEEP . ' seconds to GPIO ' . self::GPIO
     ]);
   }
