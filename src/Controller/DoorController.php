@@ -34,7 +34,7 @@ class DoorController extends AbstractController
         throw new ProcessFailedException($gpio17on);
       }
 
-      // lets wait to execute te external device
+      // let's wait to execute the external device
       sleep(self::SLEEP);
 
       // set GPIO value to 0
@@ -44,6 +44,9 @@ class DoorController extends AbstractController
       if (!$gpio17off->isSuccessful()) {
         throw new ProcessFailedException($gpio17off);
       }
+
+      // wait before next loop
+      sleep(self::SLEEP);
     }
 
     // send status and message after success
